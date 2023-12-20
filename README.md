@@ -50,9 +50,11 @@ Thinking we add a gif how the app is used.
 
 6. **Create a Pull Request:**
    - Option 1 : Using VS Code
-      - After you push your changes,a link to "Create Pull Request" should appear. Click on it.(be sure you installed github extension)
+      - install github extension
+      - click on the github extension (on the left tab), a popup will show up
+      - click on the "pull request" to create a PR
    - Option 2 : Using github 
-     - Go to your repo on GitHub and navigate to the branch you just pushed. You should see a "Compare & pull request" button. Click it.
+     - Go to the repo on GitHub and navigate to the branch you just pushed. You should see a "Compare & pull request" button. Click it.
 
 7. **Review Changes:**
    - Review the changes you made and ensure everything looks good.
