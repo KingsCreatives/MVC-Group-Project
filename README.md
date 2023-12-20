@@ -14,6 +14,52 @@ Currency Converter App is a Node.js and Express-based web application designed t
 ## Usage
 Thinking we add a gif how the app is used.
 
+## How to contribute
+
+1. **Clone the repo:**
+   - Clone the repo repository to your local machine.
+
+   ```bash
+   git clone https://github.com/KingsCreatives/MVC-Group-Project
+   ```
+
+2. **Create a Branch:**
+   - Create a new branch for your changes. The command below creates the new branch and checks out the branch immediately.
+
+   ```bash
+   git checkout -b featureName
+   ```
+
+3. **Make Changes:**
+   - Make the necessary changes to the codebase.
+
+4. **Commit Changes:**
+   - Commit your changes with a descriptive commit message.
+
+   ```bash
+   git add .
+   git commit -m "Added html/auth"
+   ```
+
+5. **Push your changes:**
+   - Push your changes to your fork on GitHub.
+
+   ```bash
+   git push origin featureName
+   ```
+
+6. **Create a Pull Request:**
+   - Option 1 : Using VS Code
+      - install github extension
+      - click on the github extension (on the left tab), a popup will show up
+      - click on the "pull request" to create a PR
+   - Option 2 : Using github 
+     - Go to the repo on GitHub and navigate to the branch you just pushed. You should see a "Compare & pull request" button. Click it.
+
+7. **Review Changes:**
+   - Review the changes you made and ensure everything looks good.
+
+
 ## License
 [MIT License](https://choosealicense.com/licenses/mit/)
 
