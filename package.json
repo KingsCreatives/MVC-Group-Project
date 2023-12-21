@@ -4,6 +4,7 @@
   "description": "Currency Converter App is a Node.js and Express-based web application designed to simplify currency conversions for users. With the integration of Mongoose for data storage and EJS for dynamic views, this application provides a seamless experience for users to input their desired currency conversion, obtaining accurate and up-to-date results. Whether for travel planning or financial analysis, our app offers a user-friendly interface and efficient conversion functionality. Explore the world of currencies effortlessly with Currency Converter App.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,13 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
+    "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
     "passport": "^0.7.0",
     "passport-apple": "^2.0.2",
