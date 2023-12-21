@@ -2,8 +2,9 @@
 Currency Converter App is a Node.js and Express-based web application designed to simplify currency conversions for users. With the integration of Mongoose for data storage and EJS for dynamic views, this application provides a seamless experience for users to input their desired currency conversion, obtaining accurate and up-to-date results. Whether for travel planning or financial analysis, our app offers a user-friendly interface and efficient conversion functionality. Explore the world of currencies effortlessly with Currency Converter App.
 
 **Link to project:** https://github.com/KingsCreatives/MVC-Group-Project
+<img width="80" alt="firefox_kJb5JLKvUR" src="https://github.com/KingsCreatives/MVC-Group-Project/assets/147882439/3c47281f-e46c-4afc-98c3-9a27f5519fd7">
 
-![Alt text](download.png)
+
 
 ## Technologies Used
 - Node.js
