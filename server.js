@@ -12,6 +12,30 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
 
+const sessionMiddleware = session({
+  secret: "money",
+  resave: false,
+  seveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection}),
+});
+
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+};
+
+//Connect to MongoDB
+mongoose.connect(uri,options)
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connection to MongoDB:', error)
+});
+
+
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
@@ -37,14 +61,20 @@ app.use(logger("dev"));
 //Use forms for put / delete
 app.use(methodOverride("_method"));
 
+
+
+
+
+
+
 // Setup Sessions - stored in MongoDB
 app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  })
+  //session({
+    //secret: "keyboard cat",
+    //resave: false,
+    //saveUninitialized: false,
+    //store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  //})
 );
 
 // Passport middleware
