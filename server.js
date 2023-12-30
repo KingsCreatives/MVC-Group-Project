@@ -10,31 +10,6 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 
-
-const sessionMiddleware = session({
-  secret: "money",
-  resave: false,
-  seveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection}),
-});
-
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-};
-
-//Connect to MongoDB
-mongoose.connect(uri,options)
-.then(() => {
-  console.log('Connected to MongoDB');
-})
-.catch((error) => {
-  console.error('Error connection to MongoDB:', error)
-});
-
-
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
@@ -61,19 +36,14 @@ app.use(logger("dev"));
 app.use(methodOverride("_method"));
 
 
-
-
-
-
-
 // Setup Sessions - stored in MongoDB
 app.use(
-  //session({
-    //secret: "keyboard cat",
-    //resave: false,
-    //saveUninitialized: false,
-    //store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  //})
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
 );
 
 // Passport middleware
@@ -89,5 +59,5 @@ app.use("/", mainRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {
-  console.log("Server is running, you better catch it!");
+  console.log(`Server is running on ${process.env.PORT}, you better catch it!`);
 });
