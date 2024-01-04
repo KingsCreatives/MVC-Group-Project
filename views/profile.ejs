@@ -1,9 +1,16 @@
-<!-- <%- include('partials/header') -%> -->
-    <p class="navbar-brand" href="#">
-      username: <%= user.userName %>
-    </p>
+<div style="display: flex;">
+  <%- include('partials/header') -%>
+  <p class="navbar-brand" href="#">
+    username: <%= user.userName %>
+  </p>
+</div>
+<!-- Conversion form-->
+<div style=>
+  <form action="/convertCurrency">
+    
+    <button type="submit" class="btn btn-primary">Convert</button>
+  </form>
   
-<form action="/convertCurrency" class="center">
-  <input type="number" placeholder="enter amount">
-</form>
+<a href="/logout">logout</a>
+
 <%- include('partials/footer') -%>
