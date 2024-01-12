@@ -1,11 +1,11 @@
 {
-  "name": "EZ Convertor",
+  "name": "ez-convertor",
   "version": "1.0.0",
   "description": "A currency convertor",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "tailwindcss build styles.css -o output.css",
+    "build": "tailwindcss  build ./public/css/style.css -o ./public/css/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
