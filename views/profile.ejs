@@ -9,24 +9,21 @@
 </head>
 <body class="bg-gray-100 p-8">
   
-    <p class="" href="#">
-      username: <%= user.userName %>
-    </p>
   
   
     <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <!-- Conversion Form -->
-        <form action="/convert" method="post" class="mb-6">
+        <form action="convert" method="post" class="mb-6 conversionForm">
             <div class="flex items-center mb-4">
                 <!-- Currency From -->
                 <div class="mr-2">
                     <label for="fromCurrency" class="block text-gray-700">From Currency</label>
                     <div class="relative">
                         <select name="fromCurrency" id="fromCurrency" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue">
-                            <!-- Include options for different currencies with flags -->
-                            <option value="usd">USD - US Dollar</option>
-                            <option value="eur">EUR - Euro</option>
-                            <!-- Add more options as needed -->
+                            <option value="" selected disabled>Select currency</option>
+                            <% currencies.forEach(currency => { %>
+                                <option value="<%= currency %>"><%= currency %></option>
+                            <% }); %>
                         </select>
                     </div>
                 </div>
@@ -36,10 +33,10 @@
                     <label for="toCurrency" class="block text-gray-700">To Currency</label>
                     <div class="relative">
                         <select name="toCurrency" id="toCurrency" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue">
-                            <!-- Include options for different currencies with flags -->
-                            <option value="usd">USD - US Dollar</option>
-                            <option value="eur">EUR - Euro</option>
-                            <!-- Add more options as needed -->
+                            <option value="" selected disabled>Select currency</option>
+                            <% currencies.forEach(currency => { %>
+                                <option value="<%= currency %>"><%= currency %></option>
+                            <% }); %>
                         </select>
                     </div>
                 </div>
@@ -52,7 +49,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue">Convert</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue" id="conversionBtn">Convert</button>
         </form>
         
       </div>
