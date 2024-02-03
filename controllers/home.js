@@ -1,6 +1,5 @@
-const express = require('express')
+const fetch = require('node-fetch');
 const User = require("../models/User");
-
 
 module.exports = {
   getIndex: (req, res) => {
@@ -8,40 +7,42 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
-      const currencies = await module.exports.getCurrencies(req, res);
-      res.render("profile.ejs", {currencies });
+      const currencies = await module.exports.getCurrencies(req,res)
+      const conversionResult = req.query.conversionResult;
+      res.render("profile.ejs", { currencies, conversionResult});
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      res.status(500).send("Internal Server Error");
     }
   },
   getCurrencies: async (req, res) => {
-        try {
-          const currencyResponse = await fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json');
-          const currencyData = await currencyResponse.json();
-
-          const currencies = Object.keys(currencyData);
-
-          return currencies
+    try {
+      const currencyResponse = await fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json');
+      const currencyData = await currencyResponse.json();
+      const currencies = Object.keys(currencyData);
+      return currencies;
     } catch (err) {
       console.error(err);
+      throw err;
     }
-    
   },
-  convertCurrency : async (req,res) => {
+  convertCurrency: async (req, res) => {
     try {
       const { amount, fromCurrency, toCurrency } = req.body;
-      
-      // Fetch exchange rates for conversion
-      const exchangeRateResponse = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/${fromCurrency}-${toCurrency}`);
-      const exchangeRateData = await exchangeRateResponse.json();
-      
-      // Calculate converted amount
-      const convertedAmount = amount * exchangeRateData[toCurrency];
+      const exchangeRate = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${fromCurrency}.json`);
+      const currencyData = await exchangeRate.json();
+      const exchangeValue = currencyData[fromCurrency][toCurrency];
+      const convertedAmount = Number(amount * exchangeValue );
+      const currencies = await module.exports.getCurrencies(req, res);
 
-      // Render the result
-      console.log(convertedAmount)
+      
+      res.render("profile.ejs", {amount, fromCurrency, toCurrency, conversionResult: convertedAmount, currencies})
+
+      
+
     } catch (err) {
       console.error(err);
+      res.status(500).send("Internal Server Error");
     }
   }
 };

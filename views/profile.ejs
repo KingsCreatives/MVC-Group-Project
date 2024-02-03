@@ -13,7 +13,7 @@
   
     <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <!-- Conversion Form -->
-        <form action="convert" method="post" class="mb-6 conversionForm">
+        <form action="/profile/convert" method="post" class="mb-6 conversionForm">
             <div class="flex items-center mb-4">
                 <!-- Currency From -->
                 <div class="mr-2">
@@ -22,7 +22,7 @@
                         <select name="fromCurrency" id="fromCurrency" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue">
                             <option value="" selected disabled>Select currency</option>
                             <% currencies.forEach(currency => { %>
-                                <option value="<%= currency %>"><%= currency %></option>
+                                <option value="<%= currency %>"><%= currency.toUpperCase() %></option>
                             <% }); %>
                         </select>
                     </div>
@@ -35,7 +35,7 @@
                         <select name="toCurrency" id="toCurrency" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue">
                             <option value="" selected disabled>Select currency</option>
                             <% currencies.forEach(currency => { %>
-                                <option value="<%= currency %>"><%= currency %></option>
+                                <option value="<%= currency %>"><%= currency.toUpperCase() %></option>
                             <% }); %>
                         </select>
                     </div>
@@ -51,6 +51,17 @@
             <!-- Submit Button -->
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue" id="conversionBtn">Convert</button>
         </form>
+                    <!--  -->
+        <% if (conversionResult) { %>
+            <div class="bg-gray-200 p-4 rounded">
+                <h2 class="text-lg font-bold mb-2">Conversion Result</h2>
+                <p class="text-gray-800">
+                    <%= fromCurrency.toUpperCase()%> <%= amount%>.00 
+                    = 
+                    <%= toCurrency.toUpperCase()%> <%= conversionResult%>
+                </p>
+            </div>
+        <% } %>
         
       </div>
     <a href="/logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded focus:outline-none focus:shadow-outline-blue">logout</a>
